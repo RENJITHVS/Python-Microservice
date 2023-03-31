@@ -1,0 +1,9 @@
+-> $ curl -X POST http://mp3converter.com/login -u renjith@gmail.com:Admin123
+-> $ curl -X POST -F 'file=@./video1.mp4' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJlbmppdGhAZ21haWwuY29tIiwiZXhwIjoxNjgwMzcxODk0LCJpYXQiOjE2ODAyODU0OTQsImFkbWluIjp0cnVlfQ._BM7O69sE4iswdl_3mX2M0yDTLThnlgaMOLTgvVqslI' http://mp3converter.com/upload
+-> $ curl --output mp3_download.mp3 -X GET -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJlbmppdGh2aXNhcmFAZ21haWwuY29tIiwiZXhwIjoxNjgwMzc3MDY1LCJpYXQiOjE2ODAyOTA2NjUsImFkbWluIjp0cnVlfQ.SD13RWAKBPYu-IUAJINXBaB4E3-ApHxAJ3aHaOl5GGU' 'http://mp3converter.com/download?fid=642732ec47b618f0dcad540a'
+
+-> docker build .
+-> docker tag {build_id} {container/path}:latest
+-> docker push {container/path}:latest
+-> kubectl delete -f ./manifests
+-> kubectl apply -f ./manifests

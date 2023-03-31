@@ -3,7 +3,7 @@ from flask import Flask, request, send_file
 from flask_pymongo import PyMongo
 from auth import validate
 from auth_svc import access
-# from storage import util
+from storage import util
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
@@ -55,28 +55,27 @@ def upload():
 
 @app.route("/download", methods=["GET"])
 def download():
-    # access, err = validate.token(request)
+    access, err = validate.token(request)
 
-    # if err:
-    #     return err
+    if err:
+        return err
 
-    # access = json.loads(access)
+    access = json.loads(access)
 
-    # if access["admin"]:
-    #     fid_string = request.args.get("fid")
+    if access["admin"]:
+        fid_string = request.args.get("fid")
 
-    #     if not fid_string:
-    #         return "fid is required", 400
+        if not fid_string:
+            return "fid is required", 400
 
-    #     try:
-    #         out = fs_mp3s.get(ObjectId(fid_string))
-    #         return send_file(out, download_name=f"{fid_string}.mp3")
-    #     except Exception as err:
-    #         print(err)
-    #         return "internal server error", 500
+        try:
+            out = fs_mp3s.get(ObjectId(fid_string))
+            return send_file(out, download_name=f"{fid_string}.mp3")
+        except Exception as err:
+            print(err)
+            return "internal server error", 500
 
-    # return "not authorized", 401
-    pass
+    return "not authorized", 401
 
 
 if __name__ == "__main__":
