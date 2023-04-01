@@ -19,3 +19,15 @@ Technologies used:
 - Mongo DB
 - Sql
 - MongoDB
+
+Endpoints:
+
+To get JWT Token
+> $ curl -X POST http://mp3converter.com/login -u renjith@gmail.com:Admin123
+
+To upload Video
+> $ curl -X POST -F 'file=@./{filename}' -H 'Authorization: Bearer {JWT}' http://mp3converter.com/upload
+
+To download video
+> $ curl --output mp3_download.mp3 -X GET -H 'Authorization: Bearer {JWT}' 'http://mp3converter.com/download?fid={mongo_id}'
+

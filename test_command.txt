@@ -7,3 +7,6 @@
 -> docker push {container/path}:latest
 -> kubectl delete -f ./manifests
 -> kubectl apply -f ./manifests
+
+-> kubectl logs -f {podname}  #error log
+-> kubectl scale delpoyment --replica=1 {podname}
